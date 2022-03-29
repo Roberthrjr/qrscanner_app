@@ -53,11 +53,11 @@ class DBProvider {
   //   return res;
   // }
 
-  Future<int> newScan(ScanModel nuevoScan) async {
+  Future<int> newScan(ScanModel newScan) async {
     final db = await database;
     final res = await db!.insert(
       'Scans',
-      nuevoScan.toJson(),
+      newScan.toJson(),
     );
     //RES es el id del ultimo registro insertado
     return res;
@@ -79,10 +79,10 @@ class DBProvider {
         : [];
   }
 
-  Future<List<ScanModel>?> getScansType(String tipo) async {
+  Future<List<ScanModel>?> getScansByType(String type) async {
     final db = await database;
     final res = await db?.rawQuery('''
-    SELECT * FROM Scans WHERE tipo = '$tipo'
+    SELECT * FROM Scans WHERE tipo = '$type'
     ''');
 
     return res!.isNotEmpty
@@ -97,7 +97,7 @@ class DBProvider {
     return res;
   }
 
-  Future<int?> deleteScan(int id) async {
+  Future<int?> deleteScanById(int id) async {
     final db = await database;
     final res = await db?.delete('Scans', where: 'id = ?', whereArgs: [id]);
     return res;
