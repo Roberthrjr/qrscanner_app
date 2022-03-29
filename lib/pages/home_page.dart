@@ -41,7 +41,7 @@ class _HomePageBody extends StatelessWidget {
     final currentIndex = uiProvider.selectedMenuOption;
 
     //TODO: leer la base de datos
-    DBProvider.db.database;
+    DBProvider.db.deleteAllScans().then(print);
 
     switch (currentIndex) {
       case 0:
