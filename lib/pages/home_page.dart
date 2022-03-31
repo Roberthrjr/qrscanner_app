@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import 'package:qrscanner_app/pages/addresses_page.dart';
 import 'package:qrscanner_app/pages/maps_page.dart';
-import 'package:qrscanner_app/providers/db_provider.dart';
+import 'package:qrscanner_app/providers/scan_list_provider.dart';
 
 import 'package:qrscanner_app/providers/ui_provider.dart';
 
@@ -19,7 +19,12 @@ class HomePage extends StatelessWidget {
         //backgroundColor: Colors.indigo,
         title: const Text('Historial'),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.delete_forever))
+          IconButton(
+              onPressed: () {
+                Provider.of<ScanListProvider>(context, listen: false)
+                    .deleteAll();
+              },
+              icon: const Icon(Icons.delete_forever))
         ],
       ),
       body: _HomePageBody(),
@@ -40,13 +45,16 @@ class _HomePageBody extends StatelessWidget {
     //Cambiar para mostra la pagina respectiva
     final currentIndex = uiProvider.selectedMenuOption;
 
-    //TODO: leer la base de datos
-    DBProvider.db.deleteAllScans().then(print);
+    //Usar el ScanListProvider
+    final scanListProvider =
+        Provider.of<ScanListProvider>(context, listen: false);
 
     switch (currentIndex) {
       case 0:
+        scanListProvider.loadScansByType('geo');
         return MapsPage();
       case 1:
+        scanListProvider.loadScansByType('http');
         return AddressesPage();
       default:
         return MapsPage();
