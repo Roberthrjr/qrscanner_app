@@ -18,17 +18,15 @@ class ScanButton extends StatelessWidget {
         //final barcodeScanRes = 'geo:-8.820138,-77.460414';
         //final barcodeScanRes = 'https://www.mastermind.ac/';
 
-        // if (barcodeScanRes == '-1') {
-        //   return;
-        // }
+        if (barcodeScanRes == '-1') {
+          return;
+        }
 
         if (!barcodeScanRes.contains('http') &&
             !barcodeScanRes.contains('geo')) {
           _showAlert(context);
           return;
         }
-
-        print(barcodeScanRes);
 
         final scanListProvider = Provider.of<ScanListProvider>(
           context,
