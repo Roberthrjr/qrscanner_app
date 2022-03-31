@@ -10,18 +10,28 @@ class MapsPage extends StatelessWidget {
 
     return ListView.builder(
         itemCount: scans.length,
-        itemBuilder: (_, i) => ListTile(
-              leading: Icon(
-                Icons.map,
-                color: Theme.of(context).primaryColor,
+        itemBuilder: (_, i) => Dismissible(
+              key: UniqueKey(),
+              background: Container(
+                color: Colors.red,
               ),
-              title: Text(scans[i].valor!),
-              subtitle: Text(scans[i].id.toString()),
-              trailing: const Icon(
-                Icons.keyboard_arrow_right,
-                color: Colors.grey,
+              onDismissed: (DismissDirection direction) {
+                Provider.of<ScanListProvider>(context, listen: false)
+                    .deleteScanById(scans[i].id!);
+              },
+              child: ListTile(
+                leading: Icon(
+                  Icons.map,
+                  color: Theme.of(context).primaryColor,
+                ),
+                title: Text(scans[i].valor!),
+                subtitle: Text(scans[i].id.toString()),
+                trailing: const Icon(
+                  Icons.keyboard_arrow_right,
+                  color: Colors.grey,
+                ),
+                onTap: () => print(scans[i].id),
               ),
-              onTap: () => print(scans[i].id),
             ));
   }
 }
