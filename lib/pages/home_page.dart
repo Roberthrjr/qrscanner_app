@@ -16,15 +16,14 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        //backgroundColor: Colors.indigo,
-        title: const Text('Historial'),
+        title: const Text('History'),
         actions: [
           IconButton(
-              onPressed: () {
-                Provider.of<ScanListProvider>(context, listen: false)
-                    .deleteAll();
-              },
-              icon: const Icon(Icons.delete_forever))
+            onPressed: () {
+              Provider.of<ScanListProvider>(context, listen: false).deleteAll();
+            },
+            icon: const Icon(Icons.delete_forever),
+          )
         ],
       ),
       body: _HomePageBody(),
@@ -51,10 +50,10 @@ class _HomePageBody extends StatelessWidget {
 
     switch (currentIndex) {
       case 0:
-        scanListProvider.loadScansByType('geo');
+        scanListProvider.loadScanByType('geo');
         return MapsPage();
       case 1:
-        scanListProvider.loadScansByType('http');
+        scanListProvider.loadScanByType('http');
         return AddressesPage();
       default:
         return MapsPage();
