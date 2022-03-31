@@ -24,4 +24,4 @@ Y por último como bonus, botón funcional para el cambio de capas de visión en
 
 ![Aquí la descripción de la imagen por si no carga](https://raw.githubusercontent.com/Roberthrjr/qrscanner_app/master/assets/F05.jpg)
 
-# Esto sería mi segunda aplicación realizada en Flutter, espero les guste y muchas gracias.
+# Esta sería mi segunda aplicación realizada en Flutter, espero les guste y muchas gracias.
