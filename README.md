@@ -2,7 +2,7 @@
 
 Proyecto desarrollado en Flutter, para la lectura de códigos QR de tipo GEO y HTTP.
 
-## Getting Started
+# Demostración
 
 Pantalla principal, seleccionada en la página "Map" por defecto (en donde se guardan los elementos escaneados de tipo "geo"):
 
